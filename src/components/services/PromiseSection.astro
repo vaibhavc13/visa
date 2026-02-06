@@ -1,0 +1,42 @@
+---
+import { CheckCircle, Heart, Shield, Sparkles } from 'lucide-react';
+
+const promises = [
+  { icon: CheckCircle, text: "100% Transparent Pricing", color: "blue" },
+  { icon: Heart, text: "Personalized Travel Experiences", color: "rose" },
+  { icon: Shield, text: "Trusted & Verified Partners", color: "green" },
+  { icon: Sparkles, text: "Hassle-Free Planning", color: "amber" }
+];
+---
+
+<section class="py-20 bg-gradient-to-br from-primary via-primary-dark to-primary overflow-hidden relative">
+  <!-- Background decorations -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 w-64 h-64 bg-accent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-accent-light rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <h2 class="text-sm md:text-base text-accent font-bold tracking-widest uppercase mb-4">Our Promise</h2>
+      <h3 class="text-4xl md:text-5xl font-display font-bold text-white tracking-tight leading-tight mb-4">Your Journey, Our Commitment</h3>
+      <p class="text-lg text-white/90 leading-relaxed">We're dedicated to making your travel dreams a reality with these core values</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      {promises.map((promise) => (
+        <div class="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+          <div class={`w-14 h-14 rounded-xl bg-gradient-to-br ${
+            promise.color === 'blue' ? 'from-blue-400 to-blue-600' :
+            promise.color === 'rose' ? 'from-rose-400 to-rose-600' :
+            promise.color === 'green' ? 'from-green-400 to-green-600' :
+            'from-amber-400 to-amber-600'
+          } flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+            <promise.icon size={28} class="text-white" />
+          </div>
+          <p class="text-white font-semibold text-lg leading-snug">{promise.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

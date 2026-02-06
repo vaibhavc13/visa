@@ -1,0 +1,141 @@
+---
+import { Phone } from 'lucide-react';
+---
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-50 invisible opacity-0 transition-all duration-300 md:hidden">
+	<!-- Backdrop with Blur -->
+	<div class="absolute inset-0 bg-black/40 backdrop-blur-md" id="menu-backdrop"></div>
+	
+	<!-- Sidebar with Glassmorphism -->
+	<div class="absolute top-0 right-0 h-screen w-72 max-w-[80vw] bg-white/95 backdrop-blur-xl shadow-2xl transform translate-x-full transition-transform duration-300" id="menu-sidebar">
+		<div class="flex flex-col h-full justify-between">
+			<!-- Mobile Header -->
+			<div class="flex items-center justify-between px-6 py-5 border-b border-slate-200/50">
+				<img src="/logo.svg" alt="True Gate Visa" class="h-10 w-auto" />
+				<button id="menu-close" class="text-slate-600 hover:text-primary p-2 -mr-2 transition-colors" aria-label="Close menu">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+				</button>
+			</div>
+
+			<!-- Mobile Navigation Links -->
+			<nav class="flex-1 flex items-center px-6">
+				<div class="flex flex-col w-full space-y-1">
+					<a href="/" class="group relative py-4 text-lg font-medium text-slate-700 hover:text-primary transition-colors duration-200">
+						<span class="relative">
+							Home
+							<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+						</span>
+					</a>
+					<div class="h-px bg-slate-200/50"></div>
+					
+					<a href="/about" class="group relative py-4 text-lg font-medium text-slate-700 hover:text-primary transition-colors duration-200">
+						<span class="relative">
+							About
+							<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+						</span>
+					</a>
+					<div class="h-px bg-slate-200/50"></div>
+					
+					<a href="/destinations" class="group relative py-4 text-lg font-medium text-slate-700 hover:text-primary transition-colors duration-200">
+						<span class="relative">
+							Destinations
+							<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+						</span>
+					</a>
+					<div class="h-px bg-slate-200/50"></div>
+					
+					<a href="/services" class="group relative py-4 text-lg font-medium text-slate-700 hover:text-primary transition-colors duration-200">
+						<span class="relative">
+							Services
+							<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+						</span>
+					</a>
+					<div class="h-px bg-slate-200/50"></div>
+					
+					<a href="/contact" class="group relative py-4 text-lg font-medium text-slate-700 hover:text-primary transition-colors duration-200">
+						<span class="relative">
+							Contact
+							<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+						</span>
+					</a>
+				</div>
+			</nav>
+
+			<!-- Mobile CTA -->
+			<div class="px-6 py-5 border-t border-slate-200/50">
+				<a href="https://wa.me/919720409020" target="_blank" class="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark hover:scale-105 transition-all duration-200 shadow-lg shadow-primary/25">
+					<Phone size={18} />
+					<span>Start a Chat</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script is:inline>
+	document.addEventListener('DOMContentLoaded', () => {
+		const menuToggle = document.getElementById('menu-toggle');
+		const menuClose = document.getElementById('menu-close');
+		const mobileMenu = document.getElementById('mobile-menu');
+		const menuSidebar = document.getElementById('menu-sidebar');
+		const menuBackdrop = document.getElementById('menu-backdrop');
+
+		function openMenu() {
+			if (mobileMenu && menuSidebar) {
+				// Prevent body scroll
+				document.body.style.overflow = 'hidden';
+				
+				// Make overlay visible
+				mobileMenu.classList.remove('invisible', 'opacity-0');
+				mobileMenu.classList.add('visible', 'opacity-100');
+				
+				// Slide sidebar in after a tiny delay for smooth animation
+				setTimeout(() => {
+					menuSidebar.classList.remove('translate-x-full');
+					menuSidebar.classList.add('translate-x-0');
+				}, 50);
+			}
+		}
+
+		function closeMenu() {
+			if (mobileMenu && menuSidebar) {
+				// Restore body scroll
+				document.body.style.overflow = '';
+				
+				// Slide sidebar out
+				menuSidebar.classList.remove('translate-x-0');
+				menuSidebar.classList.add('translate-x-full');
+				
+				// Hide overlay after sidebar animation completes
+				setTimeout(() => {
+					mobileMenu.classList.remove('visible', 'opacity-100');
+					mobileMenu.classList.add('invisible', 'opacity-0');
+				}, 300);
+			}
+		}
+
+		// Open menu
+		if (menuToggle) {
+			menuToggle.addEventListener('click', openMenu);
+		}
+
+		// Close menu button
+		if (menuClose) {
+			menuClose.addEventListener('click', closeMenu);
+		}
+
+		// Close on backdrop click
+		if (menuBackdrop) {
+			menuBackdrop.addEventListener('click', closeMenu);
+		}
+
+		// Close when clicking nav links
+		if (mobileMenu) {
+			const navLinks = mobileMenu.querySelectorAll('a[href^="/"]');
+			navLinks.forEach(link => {
+				link.addEventListener('click', closeMenu);
+			});
+		}
+	});
+</script>

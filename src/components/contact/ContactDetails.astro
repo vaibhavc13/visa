@@ -1,0 +1,57 @@
+---
+import { MapPin, Mail, Phone, Clock } from 'lucide-react';
+
+const contactInfo = [
+  {
+    icon: MapPin,
+    title: "Visit Us",
+    content: "6th Floor, Kandamkulathy Towers, Mahatma Gandhi Rd, KPCC Junction, Opp Maharaja's Ground, Shenoys, Ernakulam, Kerala 682011",
+    link: "https://maps.app.goo.gl/9dZ9HZfuAmjhMDeaA"
+  },
+  {
+    icon: Mail,
+    title: "Email Us",
+    content: "info@truegatevisa.com",
+    link: "mailto:info@truegatevisa.com"
+  },
+  {
+    icon: Phone,
+    title: "Call Us",
+    content: "+91 97204 09020",
+    link: "tel:+919720409020"
+  },
+    {
+    icon: Clock,
+    title: "Working Hours",
+    content: "Mon - Sat: 9:00 AM - 6:00 PM",
+    link: null
+  }
+];
+---
+
+<div class="space-y-8">
+  <div class="space-y-4">
+    <h2 class="text-3xl font-heading font-bold text-primary">Get in Touch</h2>
+    <p class="text-slate-600">Have questions about a package? Want a custom itinerary? Reach out to us directly or fill the form.</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    {contactInfo.map(info => (
+      <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+        <div class="bg-white p-3 rounded-lg text-accent shadow-sm shrink-0">
+          <info.icon size={24} />
+        </div>
+        <div>
+          <h4 class="font-bold text-primary mb-1">{info.title}</h4>
+          {info.link ? (
+            <a href={info.link} target={info.link.startsWith('http') ? '_blank' : '_self'} class="text-sm text-slate-600 hover:text-accent transition-colors block">
+              {info.content}
+            </a>
+          ) : (
+            <p class="text-sm text-slate-600">{info.content}</p>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

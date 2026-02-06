@@ -1,0 +1,64 @@
+---
+import DestinationCard from './DestinationCard.astro';
+
+const destinations = [
+  {
+    title: "Incredible INDIA",
+    image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=600&h=400&fit=crop",
+    link: "#",
+    subtitle: "Explore"
+  },
+  {
+    title: "Thailand",
+    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=600&h=400&fit=crop",
+    link: "#",
+    subtitle: "Let's Plan"
+  },
+  {
+    title: "Vietnam",
+    image: "https://images.unsplash.com/photo-1557750255-c76072a7aad1?q=80&w=600&h=400&fit=crop",
+    link: "#",
+    subtitle: "Let's Plan"
+  },
+  {
+    title: "Singapore",
+    image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?q=80&w=600&h=400&fit=crop",
+    link: "#",
+    subtitle: "Let's Plan"
+  },
+  {
+    title: "Bali",
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=600&h=400&fit=crop",
+    link: "#",
+    subtitle: "Let's Plan"
+  },
+  {
+    title: "Dubai",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=600&h=400&fit=crop",
+    link: "#",
+    subtitle: "Let's Plan"
+  }
+];
+---
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <span class="inline-block py-2 px-4 rounded-full bg-primary/10 text-primary font-semibold text-sm tracking-widest uppercase mb-4">
+        Popular Destinations
+      </span>
+      <h2 class="text-4xl md:text-5xl font-display font-bold text-primary tracking-tight leading-tight mb-4">
+        Explore the World
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Discover handpicked destinations that promise unforgettable experiences
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {destinations.map((dest) => (
+        <DestinationCard {...dest} />
+      ))}
+    </div>
+  </div>
+</section>

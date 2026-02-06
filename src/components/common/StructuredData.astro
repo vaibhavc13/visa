@@ -1,0 +1,68 @@
+---
+const siteUrl = 'https://truegatevisa.com'; // Update with actual domain
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "True Gate Visa",
+      "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/logo.svg`
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9720409020",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": ["en", "hi"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ernakulam",
+        "addressRegion": "Kerala",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://wa.me/919720409020"
+      ]
+    },
+    {
+      "@type": "TravelAgency",
+      "@id": `${siteUrl}/#travelagency`,
+      "name": "True Gate Visa",
+      "description": "Trusted visa consultancy and travel partner, making global journeys effortless",
+      "url": siteUrl,
+      "priceRange": "$$",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "9.9312",
+        "longitude": "76.2673"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": siteUrl,
+      "name": "True Gate Visa",
+      "description": "Professional visa consultancy and personalized travel experiences",
+      "publisher": {
+        "@id": `${siteUrl}/#organization`
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${siteUrl}/search?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

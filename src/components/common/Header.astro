@@ -1,0 +1,27 @@
+---
+import DesktopNav from './DesktopNav.astro';
+import DesktopCTA from './DesktopCTA.astro';
+import MobileMenuButton from './MobileMenuButton.astro';
+import MobileMenu from './MobileMenu.astro';
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-lg border-b border-slate-100 transition-all duration-300 shadow-sm">
+	<div class="container mx-auto px-4 h-20 flex items-center justify-between">
+		<!-- Logo -->
+		<a href="/" class="flex items-center group flex-shrink-0">
+			<img src="/logo.svg" alt="True Gate Visa" class="h-12 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
+		</a>
+
+		<!-- Desktop Nav -->
+		<DesktopNav />
+
+		<!-- Desktop CTA -->
+		<DesktopCTA />
+
+		<!-- Mobile Menu Button -->
+		<MobileMenuButton />
+	</div>
+
+	<!-- Mobile Menu -->
+	<MobileMenu />
+</header>

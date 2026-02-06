@@ -1,0 +1,32 @@
+---
+import { ArrowRight } from 'lucide-react';
+
+interface Props {
+	title: string;
+	image: string;
+	link: string;
+	subtitle: string;
+}
+
+const { title, image, link, subtitle } = Astro.props;
+---
+
+<a 
+	href={link} 
+	class="group relative h-72 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+>
+	<img 
+		src={image} 
+		alt={title} 
+		class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+	/>
+	<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+	<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+		<p class="text-sm font-medium tracking-wider mb-2 text-accent">{subtitle}</p>
+		<h3 class="text-3xl font-display font-bold mb-4 tracking-tight">{title}</h3>
+		<div class="flex items-center text-white/90 group-hover:text-accent transition-colors">
+			<span class="font-medium">Discover More</span>
+			<ArrowRight size={20} class="ml-2 transform group-hover:translate-x-2 transition-transform" />
+		</div>
+	</div>
+</a>

@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+import ServicesHero from '../components/services/ServicesHero.astro';
+import ServiceGrid from '../components/services/ServiceGrid.astro';
+import PromiseSection from '../components/services/PromiseSection.astro';
+---
+
+<Layout 
+	title="Travel Services - Explore Packages, Visa Assistance | True Gate Visa"
+	description="Discover our comprehensive travel services: personalized itinerary planning, family & group trips, visa assistance, and customized travel packages for India and international destinations."
+	keywords="explore packages, travel services, visa assistance, holiday packages, family trips, group tours, personalized itinerary, international travel packages"
+>
+  <Header />
+
+  <main>
+    <ServicesHero />
+    <ServiceGrid />
+    <PromiseSection />
+  </main>
+
+  <Footer />
+</Layout>

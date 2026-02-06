@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const { title, description, keywords, ogImage, canonicalURL } = Astro.props;
+const siteUrl = 'https://truegatevisa.com'; // Update with your actual domain
+const defaultOgImage = `${siteUrl}/og-image.jpg`;
+const fullTitle = `${title} | True Gate Visa`;
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
+<meta name="robots" content="index, follow" />
+<meta name="language" content="English" />
+<meta name="author" content="True Gate Visa" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL || Astro.url.href} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url.href} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage || defaultOgImage} />
+<meta property="og:site_name" content="True Gate Visa" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url.href} />
+<meta property="twitter:title" content={fullTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImage || defaultOgImage} />
+
+<!-- Geo Tags for Local SEO -->
+<meta name="geo.region" content="IN-KL" />
+<meta name="geo.placename" content="Ernakulam" />
+<meta name="geo.position" content="9.9312;76.2673" />
+<meta name="ICBM" content="9.9312, 76.2673" />

@@ -1,0 +1,59 @@
+---
+import { Shield, FileCheck, TrendingUp, Users, Globe, Heart } from 'lucide-react';
+
+const values = [
+  {
+    icon: Shield,
+    title: "Data Confidentiality",
+    desc: "Your personal information is secure with us. We maintain strict privacy protocols."
+  },
+  {
+    icon: FileCheck,
+    title: "Expert Documentation",
+    desc: "Professional assistance with all visa paperwork, ensuring accuracy and completeness."
+  },
+  {
+    icon: TrendingUp,
+    title: "High Approval Rate",
+    desc: "Our meticulous process and expertise result in consistently high visa approval success."
+  },
+  {
+    icon: Users,
+    title: "Personalized Service",
+    desc: "Every traveler is unique. We tailor our services to your specific needs and goals."
+  },
+  {
+    icon: Globe,
+    title: "Global Reach",
+    desc: "Serving travelers across India and worldwide with comprehensive visa solutions."
+  },
+  {
+    icon: Heart,
+    title: "Customer First",
+    desc: "Your satisfaction and success are our top priorities. We're with you every step."
+  }
+];
+---
+
+<section class="py-20 bg-gradient-to-b from-slate-50 to-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-heading font-bold text-primary mb-4">Why Choose True Gate Visa</h2>
+      <p class="text-slate-600 max-w-2xl mx-auto">
+        We combine expertise, transparency, and dedication to make your travel journey effortless.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {values.map(value => (
+        <div class="p-6 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-lg transition-shadow duration-300">
+          <div class="w-14 h-14 rounded-xl bg-primary/5 text-primary flex items-center justify-center mb-4">
+            <value.icon size={28} />
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-2">{value.title}</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">{value.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

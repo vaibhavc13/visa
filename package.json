@@ -1,0 +1,29 @@
+{
+  "name": "truegate-visa",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/react": "^4.4.2",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/outfit": "^5.2.8",
+    "@fontsource/plus-jakarta-sans": "^5.2.8",
+    "@fontsource/sora": "^5.2.8",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.13",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.17.1",
+    "css-tree": "^3.1.0",
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  }
+}

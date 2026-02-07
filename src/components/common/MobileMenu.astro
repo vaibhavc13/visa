@@ -81,10 +81,22 @@ import { Phone } from 'lucide-react';
 		const menuSidebar = document.getElementById('menu-sidebar');
 		const menuBackdrop = document.getElementById('menu-backdrop');
 
+		// Clean up any residual styles on page load
+		document.body.style.position = '';
+		document.body.style.top = '';
+		document.body.style.left = '';
+		document.body.style.right = '';
+
 		function openMenu() {
 			if (mobileMenu && menuSidebar) {
-				// Prevent body scroll
-				document.body.style.overflow = 'hidden';
+				// Store current scroll position
+				const scrollY = window.scrollY;
+				
+				// Lock body using position fixed (prevents scroll without width shift)
+				document.body.style.position = 'fixed';
+				document.body.style.top = `-${scrollY}px`;
+				document.body.style.left = '0';
+				document.body.style.right = '0';
 				
 				// Make overlay visible
 				mobileMenu.classList.remove('invisible', 'opacity-0');
@@ -100,8 +112,19 @@ import { Phone } from 'lucide-react';
 
 		function closeMenu() {
 			if (mobileMenu && menuSidebar) {
-				// Restore body scroll
-				document.body.style.overflow = '';
+				// Get the scroll position before unlocking
+				const scrollY = document.body.style.top;
+				
+				// Restore body position
+				document.body.style.position = '';
+				document.body.style.top = '';
+				document.body.style.left = '';
+				document.body.style.right = '';
+				
+				// Restore scroll position
+				if (scrollY) {
+					window.scrollTo(0, parseInt(scrollY || '0') * -1);
+				}
 				
 				// Slide sidebar out
 				menuSidebar.classList.remove('translate-x-0');

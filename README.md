@@ -232,6 +232,18 @@ npm i -g netlify-cli
 netlify deploy --prod
 ```
 
+### Deploy to Cloudflare Pages
+
+```bash
+# Build the site first
+npm run build
+
+# Deploy with Wrangler (uses wrangler.toml config)
+npx wrangler deploy
+```
+
+**Configuration:** The `wrangler.toml` file is already configured to deploy the `./dist` directory as a static site.
+
 ### Build Configuration
 ```bash
 # Build command
@@ -244,7 +256,7 @@ dist
 ### ⚠️ Windows Build Note
 This project uses `csso` for CSS optimization. If `npm run build` fails on Windows:
 - **Workaround 1:** Use WSL (Windows Subsystem for Linux)
-- **Workaround 2:** Deploy directly to Vercel/Netlify (builds work on Linux CI)
+- **Workaround 2:** Deploy directly to Vercel/Netlify/Cloudflare (builds work on Linux CI)
 
 The codebase is production-ready; the issue is environment-specific.
 
